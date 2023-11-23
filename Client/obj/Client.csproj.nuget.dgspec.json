@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\marce\\Source\\Repos\\lutzseverino\\dam-m09--bulletin-system\\Scheduler\\Scheduler.csproj": {}
+    "C:\\Users\\marce\\Source\\Repos\\lutzseverino\\dam-m09--bulletin-system\\Client\\Client.csproj": {}
   },
   "projects": {
-    "C:\\Users\\marce\\Source\\Repos\\lutzseverino\\dam-m09--bulletin-system\\Scheduler\\Scheduler.csproj": {
+    "C:\\Users\\marce\\Source\\Repos\\lutzseverino\\dam-m09--bulletin-system\\Client\\Client.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\marce\\Source\\Repos\\lutzseverino\\dam-m09--bulletin-system\\Scheduler\\Scheduler.csproj",
-        "projectName": "Scheduler",
-        "projectPath": "C:\\Users\\marce\\Source\\Repos\\lutzseverino\\dam-m09--bulletin-system\\Scheduler\\Scheduler.csproj",
+        "projectUniqueName": "C:\\Users\\marce\\Source\\Repos\\lutzseverino\\dam-m09--bulletin-system\\Client\\Client.csproj",
+        "projectName": "Client",
+        "projectPath": "C:\\Users\\marce\\Source\\Repos\\lutzseverino\\dam-m09--bulletin-system\\Client\\Client.csproj",
         "packagesPath": "C:\\Users\\marce\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\marce\\Source\\Repos\\lutzseverino\\dam-m09--bulletin-system\\Scheduler\\obj\\",
+        "outputPath": "C:\\Users\\marce\\Source\\Repos\\lutzseverino\\dam-m09--bulletin-system\\Client\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

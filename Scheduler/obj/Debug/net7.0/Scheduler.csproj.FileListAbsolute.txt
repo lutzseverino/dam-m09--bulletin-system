@@ -1,0 +1,14 @@
+C:\Users\marce\Source\Repos\lutzseverino\dam-m09--bulletin-system\Scheduler\bin\Debug\net7.0\Scheduler.exe
+C:\Users\marce\Source\Repos\lutzseverino\dam-m09--bulletin-system\Scheduler\bin\Debug\net7.0\Scheduler.deps.json
+C:\Users\marce\Source\Repos\lutzseverino\dam-m09--bulletin-system\Scheduler\bin\Debug\net7.0\Scheduler.runtimeconfig.json
+C:\Users\marce\Source\Repos\lutzseverino\dam-m09--bulletin-system\Scheduler\bin\Debug\net7.0\Scheduler.dll
+C:\Users\marce\Source\Repos\lutzseverino\dam-m09--bulletin-system\Scheduler\bin\Debug\net7.0\Scheduler.pdb
+C:\Users\marce\Source\Repos\lutzseverino\dam-m09--bulletin-system\Scheduler\obj\Debug\net7.0\Scheduler.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\marce\Source\Repos\lutzseverino\dam-m09--bulletin-system\Scheduler\obj\Debug\net7.0\Scheduler.AssemblyInfoInputs.cache
+C:\Users\marce\Source\Repos\lutzseverino\dam-m09--bulletin-system\Scheduler\obj\Debug\net7.0\Scheduler.AssemblyInfo.cs
+C:\Users\marce\Source\Repos\lutzseverino\dam-m09--bulletin-system\Scheduler\obj\Debug\net7.0\Scheduler.csproj.CoreCompileInputs.cache
+C:\Users\marce\Source\Repos\lutzseverino\dam-m09--bulletin-system\Scheduler\obj\Debug\net7.0\Scheduler.dll
+C:\Users\marce\Source\Repos\lutzseverino\dam-m09--bulletin-system\Scheduler\obj\Debug\net7.0\refint\Scheduler.dll
+C:\Users\marce\Source\Repos\lutzseverino\dam-m09--bulletin-system\Scheduler\obj\Debug\net7.0\Scheduler.pdb
+C:\Users\marce\Source\Repos\lutzseverino\dam-m09--bulletin-system\Scheduler\obj\Debug\net7.0\Scheduler.genruntimeconfig.cache
+C:\Users\marce\Source\Repos\lutzseverino\dam-m09--bulletin-system\Scheduler\obj\Debug\net7.0\ref\Scheduler.dll
