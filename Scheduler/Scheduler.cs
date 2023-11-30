@@ -1,129 +1,51 @@
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Scheduler;
 
 public class Scheduler
 {
-    private class Student
-    {
-        public string Name { get; set; }
-        public string Surname { get; set; }
-        public int Course { get; set; }
+    private readonly SemaphoreSlim _semaphore = new(3);
+    private readonly Queue<Process> _processQueue = new();
 
-        public Student(string name, string surname, int course)
+    public async Task Run(List<Process> processes)
+    {
+        foreach (var process in processes)
         {
-            Name = name;
-            Surname = surname;
-            Course = course;
+            _processQueue.Enqueue(process);
+        }
+
+        while (_processQueue.Count > 0)
+        {
+            var batchTasks = new List<Task>();
+
+            for (int i = 0; i < 3 && _processQueue.Count > 0; i++)
+            {
+                var process = _processQueue.Dequeue();
+                batchTasks.Add(RunProcessAsync(process));
+            }
+
+            await Task.WhenAll(batchTasks);
+
+            await Task.Delay(1000);
         }
     }
 
-    private readonly Process _process = new()
+    private async Task RunProcessAsync(Process process)
     {
-        StartInfo = new ProcessStartInfo
+        await _semaphore.WaitAsync();
+
+        try
         {
-            FileName = "../../../../Client/bin/Debug/net7.0/Client.exe",
-            UseShellExecute = false,
-            RedirectStandardOutput = true,
-            CreateNoWindow = true
+            process.Start();
+            await process
+                .WaitForExitAsync();
         }
-    };
-    private readonly List<Student> _students = new();
-    private readonly Queue<Student> _bulletinQueue = new();
-    private const int MaxBulletins = 3;
-
-    public void RunScheduler()
-    {
-        int option;
-        do
+        finally
         {
-            Console.WriteLine("\nMenú:");
-            Console.WriteLine("1. Introducir datos de alumnos");
-            Console.WriteLine("2. Crear notas");
-            Console.WriteLine("3. Salir");
-            Console.Write("Seleccione una opción: ");
-
-            while (!int.TryParse(Console.ReadLine(), out option) || option < 1 || option > 3)
-            {
-                Console.WriteLine("Por favor, ingrese una opción válida (1-3).");
-                Console.Write("Seleccione una opción: ");
-            }
-
-            switch (option)
-            {
-                case 1:
-                    EnterStudentData();
-                    break;
-                case 2:
-                    CreateBulletins();
-                    break;
-                case 3:
-                    Console.WriteLine("¡Chao!");
-                    break;
-            }
-        } while (option != 3);
-    }
-
-    private void EnterStudentData()
-    {
-        Console.Write("Ingrese el número de alumnos: ");
-        int amount;
-        while (!int.TryParse(Console.ReadLine(), out amount) || amount <= 0)
-        {
-            Console.WriteLine("Por favor, ingrese un número válido de alumnos mayor que 0.");
-            Console.Write("Ingrese el número de alumnos: ");
-        }
-
-        for (int i = 1; i <= amount; i++)
-        {
-            Console.WriteLine($"Introduce los datos del alumno {i}:");
-            Console.Write("Nombre: ");
-            var name = Console.ReadLine();
-
-            Console.Write("Apellido: ");
-            var surname = Console.ReadLine();
-
-            Console.Write("Curso: ");
-            if (int.TryParse(Console.ReadLine(), out int curso))
-            {
-                _students.Add(new Student(name, surname, curso));
-            }
-            else
-            {
-                Console.WriteLine("Entrada no válida. Por favor, introduce un valor numérico.");
-            }
-        }
-    }
-
-    private void CreateBulletins()
-    {
-        if (_students.Count > 0)
-        {
-            Console.WriteLine($"A continuación se crearán los {_students.Count} alumnos:");
-
-            _bulletinQueue.Clear();
-
-            foreach (var student in _students)
-            {
-                _bulletinQueue.Enqueue(student);
-            }
-
-            while (_bulletinQueue.Count > 0)
-            {
-                for (int i = 0; i < Math.Min(MaxBulletins, _bulletinQueue.Count); i++)
-                {
-                    var currentStudent = _bulletinQueue.Dequeue();
-                    _process.StartInfo.Arguments =
-                        $"{currentStudent.Name} {currentStudent.Surname} {currentStudent.Course}";
-                    _process.Start();
-                }
-
-                Thread.Sleep(5000);
-            }
-        }
-        else
-        {
-            Console.WriteLine("Primero debes introducir alumnos");
+            _semaphore.Release();
         }
     }
 }
