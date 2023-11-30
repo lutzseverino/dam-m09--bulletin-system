@@ -1,10 +1,11 @@
-﻿namespace Scheduler;
+﻿using Scheduler.Menu;
+
+namespace Scheduler;
 
 class Program
 {
     private static void Main(string[] args)
     {
-        var scheduler = new Scheduler();
-        scheduler.RunScheduler();
+        new Navigator().Show();
     }
 }
